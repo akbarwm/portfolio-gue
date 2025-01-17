@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Akbar Wahyu Maulana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            animation: fadeIn 2s;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            animation: fadeIn 3s;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 2s;
+        }
+        .about img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid #fff;
+        }
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .about p {
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills {
+            margin: 50px 20px;
+            padding: 20px;
+            animation: zoomIn 2s;
+        }
+        .skills h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .skills .skill-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .skills .skill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+        .skills .skill:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Akbar Wahyu Maulana</h1>
+        <p>Mahasiswa Teknik Informatika | Politeknik Negeri Batam</p>
+    </header>
+
+    <section class="about">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture">
+        <h2>Tentang Saya</h2>
+        <p>
+            Halo! Saya Akbar Wahyu Maulana, seorang mahasiswa Teknik Informatika yang tinggal di Batam. 
+            Saya sangat tertarik dengan teknologi, pemrograman, dan desain web. 
+            Saya selalu berusaha belajar dan berkembang untuk menjadi seorang profesional di bidang IT.
+        </p>
+    </section>
+
+    <section class="skills">
+        <h2>Keahlian</h2>
+        <div class="skill-list">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Bootstrap</div>
+            <div class="skill">Laravel</div>
+            <div class="skill">React</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Akbar Wahyu Maulana | Dibuat dengan ❤ di Batam</p>
+    </footer>
+</body>
+</html>
