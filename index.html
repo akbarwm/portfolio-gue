@@ -12,6 +12,7 @@
             background: black;
             color: white;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
         .stars {
             position: absolute;
@@ -19,6 +20,7 @@
             height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
             animation: twinkle 20s linear infinite;
+            z-index: -1;
         }
         @keyframes twinkle {
             0% { opacity: 0.5; }
@@ -56,6 +58,32 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 50px;
+            text-align: center;
+        }
+        .grid-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px;
+        }
+        .slide {
+            flex: 0 0 300px;
+            margin-right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            scroll-snap-align: start;
+        }
     </style>
 </head>
 <body>
@@ -65,5 +93,19 @@
         <p>Jelajahi dunia saya di luar angkasa!</p>
     </div>
     <div class="planet"></div>
+    
+    <section class="grid-section">
+        <div class="grid-item">Project 1</div>
+        <div class="grid-item">Project 2</div>
+        <div class="grid-item">Project 3</div>
+        <div class="grid-item">Project 4</div>
+    </section>
+    
+    <section class="slider">
+        <div class="slide">Slide 1</div>
+        <div class="slide">Slide 2</div>
+        <div class="slide">Slide 3</div>
+        <div class="slide">Slide 4</div>
+    </section>
 </body>
 </html>
