@@ -11,7 +11,7 @@
             overflow-x: hidden;
             background: black;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             scroll-behavior: smooth;
         }
         .stars {
@@ -58,9 +58,21 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
         .grid-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 50px;
             text-align: center;
@@ -110,10 +122,6 @@
         .slider-indicator.active {
             background: white;
         }
-        .project-section {
-            padding: 50px;
-            text-align: center;
-        }
         .project-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -137,6 +145,48 @@
         .project-item a:hover {
             text-decoration: underline;
         }
+        .skills-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .skill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .skill:hover {
+            transform: scale(1.05);
+        }
+        .experience-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .experience-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 800px;
+            transition: transform 0.3s ease;
+        }
+        .experience-item:hover {
+            transform: scale(1.05);
+        }
+        .experience-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .experience-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
         @media (max-width: 768px) {
             .grid-section {
                 grid-template-columns: 1fr;
@@ -147,6 +197,13 @@
             .slide {
                 margin-right: 0;
                 margin-bottom: 20px;
+            }
+            .skills-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .experience-item {
+                width: 100%;
             }
         }
     </style>
@@ -159,62 +216,110 @@
     </div>
     <div class="planet"></div>
     
-    <section class="grid-section">
-        <div class="grid-item">Project 1</div>
-        <div class="grid-item">Project 2</div>
-        <div class="grid-item">Project 3</div>
-        <div class="grid-item">Project 4</div>
+    <section class="section" id="about">
+        <h2>Tentang Saya</h2>
+        <p>Halo, saya adalah seorang pengembang web yang berdedikasi untuk menciptakan solusi digital yang inovatif dan efisien. Saya memiliki pengalaman dalam berbagai teknologi dan senang belajar hal-hal baru setiap hari.</p>
     </section>
     
-    <section class="slider">
-        <div class="slide">Slide 1</div>
-        <div class="slide">Slide 2</div>
-        <div class="slide">Slide 3</div>
-        <div class="slide">Slide 4</div>
+    <section class="skills-section" id="skills">
+        <h2>Keterampilan</h2>
+        <div class="skill">
+            <h3>HTML & CSS</h3>
+            <p>Menguasai HTML5 dan CSS3 untuk membuat tampilan web yang responsif dan menarik.</p>
+        </div>
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Menguasai JavaScript untuk menambahkan interaktivitas ke halaman web.</p>
+        </div>
+        <div class="skill">
+            <h3>React</h3>
+            <p>Menguasai React untuk membangun aplikasi web yang dinamis dan efisien.</p>
+        </div>
+        <div class="skill">
+            <h3>Node.js</h3>
+            <p>Menguasai Node.js untuk pengembangan backend yang kuat dan skalabel.</p>
+        </div>
+        <div class="skill">
+            <h3>Git</h3>
+            <p>Menguasai Git untuk kontrol versi dan kolaborasi tim.</p>
+        </div>
+        <div class="skill">
+            <h3>UI/UX Design</h3>
+            <p>Menguasai prinsip UI/UX untuk menciptakan pengalaman pengguna yang baik.</p>
+        </div>
+    </section>
+    
+    <section class="experience-section" id="experience">
+        <h2>Pengalaman Kerja</h2>
+        <div class="experience-item">
+            <h3>Pengembang Web Junior</h3>
+            <p>PT. Teknologi Digital, Januari 2022 - Desember 2022</p>
+            <p>Membantu dalam pengembangan aplikasi web dan memperbaiki bug.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Pengembang Web Senior</h3>
+            <p>PT. Solusi Digital, Januari 2023 - Sekarang</p>
+            <p>Mengembangkan aplikasi web berbasis React dan Node.js, serta mengelola tim pengembangan.</p>
+        </div>
+    </section>
+    
+    <section class="grid-section" id="projects">
+        <h2>Proyek</h2>
+        <div class="grid-item">
+            <h3>Proyek 1: Aplikasi Pencarian</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi pencarian yang efisien dan mudah digunakan.</p>
+            <a href="https://github.com/username/project1" target="_blank">Lihat di GitHub</a>
+        </div>
+        <div class="grid-item">
+            <h3>Proyek 2: Website Toko Online</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah website toko online yang responsif dan user-friendly.</p>
+            <a href="https://github.com/username/project2" target="_blank">Lihat di GitHub</a>
+        </div>
+        <div class="grid-item">
+            <h3>Proyek 3: Aplikasi Manajemen Tugas</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi manajemen tugas yang membantu meningkatkan produktivitas.</p>
+            <a href="https://github.com/username/project3" target="_blank">Lihat di GitHub</a>
+        </div>
+        <div class="grid-item">
+            <h3>Proyek 4: Game Edukasi</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah game edukasi yang interaktif dan menarik.</p>
+            <a href="https://github.com/username/project4" target="_blank">Lihat di GitHub</a>
+        </div>
+        <div class="grid-item">
+            <h3>Proyek 5: Aplikasi Catatan</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi catatan yang membantu Anda mengatur pikiran dan ide.</p>
+            <a href="https://github.com/username/project5" target="_blank">Lihat di GitHub</a>
+        </div>
+        <div class="grid-item">
+            <h3>Proyek 6: Website Berita</h3>
+            <p>Deskripsi singkat tentang proyek ini. Ini adalah website berita yang menyediakan informasi terkini dan akurat.</p>
+            <a href="https://github.com/username/project6" target="_blank">Lihat di GitHub</a>
+        </div>
+    </section>
+    
+    <section class="slider" id="testimonials">
+        <h2>Testimoni</h2>
+        <div class="slide">
+            <p>\"Saya sangat senang dengan hasil kerja dari [Nama Anda]. Dia sangat profesional dan cepat dalam menyelesaikan proyek.\"</p>
+            <p>- Klien 1</p>
+        </div>
+        <div class="slide">
+            <p>\"Pekerjaan [Nama Anda] sangat memuaskan. Dia mampu menyelesaikan proyek tepat waktu dan sesuai dengan harapan.\"</p>
+            <p>- Klien 2</p>
+        </div>
+        <div class="slide">
+            <p>\"[Nama Anda] adalah seorang pengembang web yang sangat berbakat. Dia selalu memberikan solusi yang tepat untuk setiap tantangan.\"</p>
+            <p>- Klien 3</p>
+        </div>
+        <div class="slide">
+            <p>\"Saya sangat puas dengan kerjasama dengan [Nama Anda]. Dia sangat responsif dan berkomunikasi dengan baik.\"</p>
+            <p>- Klien 4</p>
+        </div>
         <div class="slider-indicators">
             <div class="slider-indicator active"></div>
             <div class="slider-indicator"></div>
             <div class="slider-indicator"></div>
             <div class="slider-indicator"></div>
-        </div>
-    </section>
-    
-    <section class="project-section">
-        <div class="project-item">
-            <h2>Proyek 1: Aplikasi Pencarian</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 1">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi pencarian yang efisien dan mudah digunakan.</p>
-            <a href="https://github.com/username/project1" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="project-item">
-            <h2>Proyek 2: Website Toko Online</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 2">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah website toko online yang responsif dan user-friendly.</p>
-            <a href="https://github.com/username/project2" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="project-item">
-            <h2>Proyek 3: Aplikasi Manajemen Tugas</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 3">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi manajemen tugas yang membantu meningkatkan produktivitas.</p>
-            <a href="https://github.com/username/project3" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="project-item">
-            <h2>Proyek 4: Game Edukasi</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 4">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah game edukasi yang interaktif dan menarik.</p>
-            <a href="https://github.com/username/project4" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="project-item">
-            <h2>Proyek 5: Aplikasi Catatan</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 5">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi catatan yang membantu Anda mengatur pikiran dan ide.</p>
-            <a href="https://github.com/username/project5" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="project-item">
-            <h2>Proyek 6: Website Berita</h2>
-            <img src="https://via.placeholder.com/300" alt="Proyek 6">
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah website berita yang menyediakan informasi terkini dan akurat.</p>
-            <a href="https://github.com/username/project6" target="_blank">Lihat di GitHub</a>
         </div>
     </section>
 </body>
