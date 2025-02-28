@@ -214,7 +214,9 @@
         .nav {
             position: fixed;
             top: 20px;
-            right: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             z-index: 100;
         }
         
@@ -222,6 +224,12 @@
             display: flex;
             gap: 15px;
             list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            padding: 10px 20px;
+            backdrop-filter: blur(10px);
         }
         
         .nav-link {
@@ -233,6 +241,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: block;
         }
         
         .nav-link::before {
@@ -257,6 +266,14 @@
         }
         
         /* Enhanced sections */
+        section {
+            min-height: 100vh;
+            padding-top: 80px; /* Add padding to account for fixed header */
+            margin-bottom: 40px;
+            position: relative;
+            scroll-margin-top: 80px; /* This helps with scroll positioning */
+        }
+        
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 40px;
@@ -560,6 +577,20 @@
             box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
         }
         
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             h1 {
@@ -568,6 +599,29 @@
             
             .subtitle {
                 font-size: 1.2rem;
+            }
+            
+            .nav-list {
+                position: fixed;
+                flex-direction: column;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgba(0, 0, 10, 0.9);
+                padding: 80px 20px 20px;
+                transition: right 0.3s ease;
+                align-items: center;
+                border-radius: 0;
+                gap: 20px;
+            }
+            
+            .nav-list.active {
+                right: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
             }
             
             .grid-section, .project-section {
@@ -595,6 +649,11 @@
             .rocket {
                 transform: scale(0.8);
             }
+            
+            section {
+                min-height: auto;
+                padding-top: 60px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
@@ -603,11 +662,15 @@
     <div class="stars" id="stars"></div>
     <div class="nebula"></div>
     
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+    
     <!-- Navigation -->
     <nav class="nav">
-        <ul class="nav-list">
+        <ul class="nav-list" id="nav-list">
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -649,7 +712,7 @@
     </section>
     
     <!-- Slider Section -->
-    <section class="slider-section">
+    <section class="slider-section" id="experience">
         <h2 class="section-title">Experience</h2>
         <div class="slider">
             <div class="slide">
@@ -741,170 +804,3 @@
         </div>
         <p>© 2025 Akbar Wahyu Maulana. All Rights Reserved.</p>
     </footer>
-    
-    <script>
-        // Create dynamic stars
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 200;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Random size for stars
-                const size = Math.random() * 3;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // Random position
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                star.style.left = `${posX}%`;
-                star.style.top = `${posY}%`;
-                
-                // Random twinkle animation
-                const duration = 2 + Math.random() * 3;
-                star.style.animation = `twinkle ${duration}s ease-in-out infinite`;
-                star.style.animationDelay = `${Math.random() * 5}s`;
-                
-                starsContainer.appendChild(star);
-            }
-        }
-        
-        // Slider functionality
-        function initSlider() {
-            const slider = document.querySelector('.slider');
-            const slides = document.querySelectorAll('.slide');
-            const indicators = document.querySelectorAll('.slider-indicator');
-            const prevBtn = document.querySelector('.prev-slide');
-            const nextBtn = document.querySelector('.next-slide');
-            
-            let currentIndex = 0;
-            
-            // Set active indicator
-            function setActiveIndicator(index) {
-                indicators.forEach(ind => ind.classList.remove('active'));
-                indicators[index].classList.add('active');
-            }
-            
-            // Scroll to slide
-            function scrollToSlide(index) {
-                const slideWidth = slides[0].offsetWidth + 30; // width + margin
-                slider.scrollTo({
-                    left: slideWidth * index,
-                    behavior: 'smooth'
-                });
-                currentIndex = index;
-                setActiveIndicator(index);
-            }
-            
-            // Event listeners for buttons
-            if (prevBtn && nextBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = Math.max(0, currentIndex - 1);
-                    scrollToSlide(currentIndex);
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = Math.min(slides.length - 1, currentIndex + 1);
-                    scrollToSlide(currentIndex);
-                });
-            }
-            
-            // Event listeners for indicators
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    scrollToSlide(index);
-                });
-            });
-            
-            // Handle scroll events
-            slider.addEventListener('scroll', () => {
-                const slideWidth = slides[0].offsetWidth + 30;
-                const scrollPos = slider.scrollLeft;
-                const index = Math.round(scrollPos / slideWidth);
-                if (index !== currentIndex) {
-                    currentIndex = index;
-                    setActiveIndicator(index);
-                }
-            });
-        }
-        
-        // Smooth scrolling for navigation
-        function initSmoothScroll() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-        
-        // Parallax effect for stars and elements
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                const stars = document.getElementById('stars');
-                const planet = document.querySelector('.planet');
-                const rocket = document.querySelector('.rocket');
-                
-                // Move stars slightly with scroll
-                if (stars) {
-                    stars.style.transform = `translateY(${scrollY * 0.3}px)`;
-                }
-                
-                // Move planet with scroll
-                if (planet) {
-                    planet.style.transform = `translateY(${scrollY * 0.1}px) rotate(${scrollY * 0.05}deg)`;
-                }
-                
-                // Move rocket with scroll
-                if (rocket) {
-                    rocket.style.transform = `translateY(${-scrollY * 0.2}px) rotate(${-5 + scrollY * 0.02}deg)`;
-                }
-            });
-        }
-        
-        // Animate elements when they come into view
-        function initScrollAnimations() {
-            const animatedElements = document.querySelectorAll('.grid-item, .project-item, .slide, .section-title');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        }
-        
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            createStars();
-            initSlider();
-            initSmoothScroll();
-            initParallax();
-            initScrollAnimations();
-        });
-    </script>
-</body>
-</html>
