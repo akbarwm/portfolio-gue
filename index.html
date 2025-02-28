@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Laut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Reset CSS */
         * {
@@ -14,10 +15,9 @@
 
         /* Body styling */
         body {
-            font-family: Arial, sans-serif;
-            background: url('https://images.unsplash.com/photo-1554185062-30940b947779?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #00c6ff, #0072ff);
+            color: #333;
             text-align: center;
             padding: 20px;
         }
@@ -25,9 +25,10 @@
         /* Header styling */
         header {
             padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Navigation styling */
@@ -36,15 +37,16 @@
         }
 
         nav a {
-            color: white;
+            color: #0072ff;
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #00bfff;
+            color: #0056b3;
         }
 
         /* Main content styling */
@@ -52,47 +54,53 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 20px;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.5);
+            background: white;
             border-radius: 10px;
             margin: 10px;
             padding: 20px;
             width: 300px;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .card h2 {
             margin-bottom: 10px;
+            color: #0072ff;
         }
 
         .card p {
             font-size: 16px;
+            color: #555;
         }
 
         /* Footer styling */
         footer {
             margin-top: 20px;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Animation for wave effect */
         @keyframes wave {
             0% {
-                transform: translateY(0);
+                transform: translateX(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateX(-50%);
             }
             100% {
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
 
@@ -100,10 +108,11 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 200%;
             height: 100px;
             background: url('https://www.transparenttextures.com/patterns/watercolor.png') repeat;
-            animation: wave 3s infinite;
+            animation: wave 10s infinite linear;
+            opacity: 0.5;
         }
 
         /* Responsive adjustments */
