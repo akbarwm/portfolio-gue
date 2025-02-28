@@ -3,324 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Space Theme</title>
+    <title>Portfolio Laut</title>
     <style>
-        body {
+        /* Reset CSS */
+        * {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            background: black;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1554185062-30940b947779?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
             color: white;
-            font-family: 'Arial', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            animation: twinkle 20s linear infinite;
-            z-index: -1;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
-        .container {
             text-align: center;
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 20px;
         }
-        h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            animation: fadeIn 2s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .planet {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,165,0,1) 30%, rgba(139,69,19,1) 90%);
-            border-radius: 50%;
-            position: absolute;
-            bottom: 20px;
-            animation: float 5s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .section h2 {
-            font-size: 2.5rem;
+
+        /* Header styling */
+        header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
             margin-bottom: 20px;
         }
-        .section p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-        .grid-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 50px;
-            text-align: center;
-        }
-        .grid-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .grid-item:hover {
-            transform: scale(1.05);
-        }
-        .slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 20px;
-            position: relative;
-        }
-        .slide {
-            flex: 0 0 300px;
-            margin-right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            scroll-snap-align: start;
-            transition: transform 0.3s ease;
-        }
-        .slide:hover {
-            transform: scale(1.05);
-        }
-        .slider-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .slider-indicator {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .slider-indicator.active {
-            background: white;
-        }
-        .project-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
+
+        /* Navigation styling */
+        nav {
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
         }
-        .project-item:hover {
-            transform: scale(1.05);
-        }
-        .project-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .project-item a {
+
+        nav a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
         }
-        .project-item a:hover {
-            text-decoration: underline;
+
+        nav a:hover {
+            color: #00bfff;
         }
-        .skills-section {
+
+        /* Main content styling */
+        main {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
         }
-        .skill {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+
+        .card {
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s ease;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s;
         }
-        .skill:hover {
+
+        .card:hover {
             transform: scale(1.05);
         }
-        .experience-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .experience-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            width: 80%;
-            max-width: 800px;
-            transition: transform 0.3s ease;
-        }
-        .experience-item:hover {
-            transform: scale(1.05);
-        }
-        .experience-item h3 {
-            font-size: 1.5rem;
+
+        .card h2 {
             margin-bottom: 10px;
         }
-        .experience-item p {
-            font-size: 1rem;
-            line-height: 1.6;
+
+        .card p {
+            font-size: 16px;
         }
+
+        /* Footer styling */
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Animation for wave effect */
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://www.transparenttextures.com/patterns/watercolor.png') repeat;
+            animation: wave 3s infinite;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .grid-section {
-                grid-template-columns: 1fr;
-            }
-            .slider {
-                flex-direction: column;
-            }
-            .slide {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            .skills-section {
-                flex-direction: column;
-                align-items: center;
-            }
-            .experience-item {
-                width: 100%;
+            .card {
+                width: 90%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="container">
-        <h1>Selamat Datang di Portfolio Saya</h1>
-        <p>Jelajahi dunia saya di luar angkasa!</p>
-    </div>
-    <div class="planet"></div>
-    
-    <section class="section" id="about">
-        <h2>Tentang Saya</h2>
-        <p>Halo, saya adalah seorang pengembang web yang berdedikasi untuk menciptakan solusi digital yang inovatif dan efisien. Saya memiliki pengalaman dalam berbagai teknologi dan senang belajar hal-hal baru setiap hari.</p>
-    </section>
-    
-    <section class="skills-section" id="skills">
-        <h2>Keterampilan</h2>
-        <div class="skill">
-            <h3>HTML & CSS</h3>
-            <p>Menguasai HTML5 dan CSS3 untuk membuat tampilan web yang responsif dan menarik.</p>
-        </div>
-        <div class="skill">
-            <h3>JavaScript</h3>
-            <p>Menguasai JavaScript untuk menambahkan interaktivitas ke halaman web.</p>
-        </div>
-        <div class="skill">
-            <h3>React</h3>
-            <p>Menguasai React untuk membangun aplikasi web yang dinamis dan efisien.</p>
-        </div>
-        <div class="skill">
-            <h3>Node.js</h3>
-            <p>Menguasai Node.js untuk pengembangan backend yang kuat dan skalabel.</p>
-        </div>
-        <div class="skill">
-            <h3>Git</h3>
-            <p>Menguasai Git untuk kontrol versi dan kolaborasi tim.</p>
-        </div>
-        <div class="skill">
-            <h3>UI/UX Design</h3>
-            <p>Menguasai prinsip UI/UX untuk menciptakan pengalaman pengguna yang baik.</p>
-        </div>
-    </section>
-    
-    <section class="experience-section" id="experience">
-        <h2>Pengalaman Kerja</h2>
-        <div class="experience-item">
-            <h3>Pengembang Web Junior</h3>
-            <p>PT. Teknologi Digital, Januari 2022 - Desember 2022</p>
-            <p>Membantu dalam pengembangan aplikasi web dan memperbaiki bug.</p>
-        </div>
-        <div class="experience-item">
-            <h3>Pengembang Web Senior</h3>
-            <p>PT. Solusi Digital, Januari 2023 - Sekarang</p>
-            <p>Mengembangkan aplikasi web berbasis React dan Node.js, serta mengelola tim pengembangan.</p>
-        </div>
-    </section>
-    
-    <section class="grid-section" id="projects">
-        <h2>Proyek</h2>
-        <div class="grid-item">
-            <h3>Proyek 1: Aplikasi Pencarian</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi pencarian yang efisien dan mudah digunakan.</p>
-            <a href="https://github.com/username/project1" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="grid-item">
-            <h3>Proyek 2: Website Toko Online</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah website toko online yang responsif dan user-friendly.</p>
-            <a href="https://github.com/username/project2" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="grid-item">
-            <h3>Proyek 3: Aplikasi Manajemen Tugas</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi manajemen tugas yang membantu meningkatkan produktivitas.</p>
-            <a href="https://github.com/username/project3" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="grid-item">
-            <h3>Proyek 4: Game Edukasi</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah game edukasi yang interaktif dan menarik.</p>
-            <a href="https://github.com/username/project4" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="grid-item">
-            <h3>Proyek 5: Aplikasi Catatan</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah aplikasi catatan yang membantu Anda mengatur pikiran dan ide.</p>
-            <a href="https://github.com/username/project5" target="_blank">Lihat di GitHub</a>
-        </div>
-        <div class="grid-item">
-            <h3>Proyek 6: Website Berita</h3>
-            <p>Deskripsi singkat tentang proyek ini. Ini adalah website berita yang menyediakan informasi terkini dan akurat.</p>
-            <a href="https://github.com/username/project6" target="_blank">Lihat di GitHub</a>
-        </div>
-    </section>
-    
-    <section class="slider" id="testimonials">
-        <h2>Testimoni</h2>
-        <div class="slide">
-            <p>\"Saya sangat senang dengan hasil kerja dari [Nama Anda]. Dia sangat profesional dan cepat dalam menyelesaikan proyek.\"</p>
-            <p>- Klien 1</p>
-        </div>
-        <div class="slide">
-            <p>\"Pekerjaan [Nama Anda] sangat memuaskan. Dia mampu menyelesaikan proyek tepat waktu dan sesuai dengan harapan.\"</p>
-            <p>- Klien 2</p>
-        </div>
-        <div class="slide">
-            <p>\"[Nama Anda] adalah seorang pengembang web yang sangat berbakat. Dia selalu memberikan solusi yang tepat untuk setiap tantangan.\"</p>
-            <p>- Klien 3</p>
-        </div>
-        <div class="slide">
-            <p>\"Saya sangat puas dengan kerjasama dengan [Nama Anda]. Dia sangat responsif dan berkomunikasi dengan baik.\"</p>
-            <p>- Klien 4</p>
-        </div>
-        <div class="slider-indicators">
-            <div class="slider-indicator active"></div>
-            <div class="slider-indicator"></div>
-            <div class="slider-indicator"></div>
-            <div class="slider-indicator"></div>
-        </div>
-    </section>
+    <header>
+        <h1>Portfolio Saya</h1>
+        <nav>
+            <a href="#about">Tentang Saya</a>
+            <a href="#projects">Proyek</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="card">
+            <h2>Tentang Saya</h2>
+            <p>Saya adalah seorang pengembang web yang berdedikasi untuk menciptakan solusi digital yang inovatif dan menarik.</p>
+        </section>
+
+        <section id="projects" class="card">
+            <h2>Proyek</h2>
+            <p>Beberapa proyek yang telah saya kerjakan termasuk pembuatan website perusahaan, aplikasi mobile, dan sistem manajemen konten.</p>
+        </section>
+
+        <section id="contact" class="card">
+            <h2>Kontak</h2>
+            <p>Anda dapat menghubungi saya melalui email: contoh@email.com atau telepon: 123-456-7890.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Portfolio Laut. Semua hak dilindungi undang-undang.</p>
+    </footer>
+
+    <div class="wave"></div>
 </body>
 </html>
